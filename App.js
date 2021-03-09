@@ -7,21 +7,26 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
+import Animated, {useAnimatedStyle} from 'react-native-reanimated';
 
 const App: () => React$Node = () => {
+  const animated = useAnimatedStyle(() => {
+    return {
+      transform: [{scale: 1}],
+    };
+  });
+
   return (
-    <>
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={{backgroundColor: 'gray'}}>
-          <View>
-            <Text style={styles.footer}>Hello Wix!</Text>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <SafeAreaView>
+      <Animated.ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={{backgroundColor: 'gray'}}>
+        <View>
+          <Text style={styles.footer}>Hello Wix!</Text>
+        </View>
+      </Animated.ScrollView>
+    </SafeAreaView>
   );
 };
 
