@@ -1,7 +1,8 @@
 /**
  * @format
  */
-
+import React from 'react';
+import {View, TextInput, StyleSheet} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import App from './App';
 Navigation.registerComponent('com.myApp.WelcomeScreen', () => App);
@@ -17,6 +18,7 @@ Navigation.events().registerAppLaunchedListener(async () => {
                 {
                   component: {
                     name: 'com.myApp.WelcomeScreen',
+                    id: 'myDummyId',
                   },
                 },
               ],
@@ -35,4 +37,22 @@ Navigation.events().registerAppLaunchedListener(async () => {
       },
     },
   });
+});
+
+const FocusKeyboard = (props) => {
+  return (
+    <View style={styles.root}>
+      <TextInput autoFocus placeholder={'Placeholder'} />
+    </View>
+  );
+};
+Navigation.registerComponent('FocusKeyboard', () => FocusKeyboard);
+
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'whitesmoke',
+  },
 });

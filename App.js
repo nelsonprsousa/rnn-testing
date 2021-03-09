@@ -7,42 +7,38 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Button} from 'react-native';
+import {Navigation} from 'react-native-navigation';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={{backgroundColor: 'white'}}>
-          <View>
-            <Text style={styles.footer}>Hello Wix!</Text>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+const App = () => (
+  <SafeAreaView style={styles.container}>
+    <View>
+      <Button
+        title="Press me"
+        onPress={() => {
+          Navigation.push('myDummyId', {
+            component: {
+              name: 'FocusKeyboard',
+            },
+          });
+        }}
+      />
+    </View>
+  </SafeAreaView>
+);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    marginHorizontal: 16,
+  },
+});
 
 App.options = {
   bottomTab: {
-    text: 'App'
-  }
-}
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: 'white',
+    text: 'App',
   },
-  footer: {
-    color: 'black',
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    height: 1500,
-  },
-});
+};
 
 export default App;
