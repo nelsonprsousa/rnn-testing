@@ -15,7 +15,7 @@ const App: () => React$Node = () => {
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
-          style={{backgroundColor: 'gray'}}>
+          style={{backgroundColor: 'white'}}>
           <View>
             <Text style={styles.footer}>Hello Wix!</Text>
           </View>
@@ -24,6 +24,12 @@ const App: () => React$Node = () => {
     </>
   );
 };
+
+App.options = {
+  bottomTab: {
+    text: 'App'
+  }
+}
 
 const styles = StyleSheet.create({
   scrollView: {

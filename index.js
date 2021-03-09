@@ -5,17 +5,33 @@
 import {Navigation} from 'react-native-navigation';
 import App from './App';
 Navigation.registerComponent('com.myApp.WelcomeScreen', () => App);
-Navigation.events().registerAppLaunchedListener(() => {
+
+Navigation.events().registerAppLaunchedListener(async () => {
   Navigation.setRoot({
     root: {
-      stack: {
+      bottomTabs: {
         children: [
           {
-            component: {
-              name: 'com.myApp.WelcomeScreen',
+            stack: {
+              children: [
+                {
+                  component: {
+                    name: 'com.myApp.WelcomeScreen',
+                  },
+                },
+              ],
             },
           },
         ],
+        options: {
+          bottomTabs: {
+            backgroundColor: 'white',
+            shadow: {
+              color: 'red',
+            },
+            hideShadow: false,
+          },
+        },
       },
     },
   });
