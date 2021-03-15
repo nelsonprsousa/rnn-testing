@@ -9,30 +9,47 @@ Navigation.registerComponent('com.myApp.WelcomeScreen', () => App);
 Navigation.events().registerAppLaunchedListener(async () => {
   Navigation.setRoot({
     root: {
-      bottomTabs: {
+      stack: {
+        id: 'com.myApp.WelcomeScreen',
         children: [
           {
-            stack: {
-              children: [
-                {
-                  component: {
-                    name: 'com.myApp.WelcomeScreen',
-                  },
-                },
-              ],
+            component: {
+              name: 'com.myApp.WelcomeScreen',
             },
           },
         ],
-        options: {
-          bottomTabs: {
-            backgroundColor: 'white',
-            shadow: {
-              color: 'red',
-            },
-            hideShadow: false,
-          },
-        },
       },
     },
   });
 });
+
+// Navigation.events().registerAppLaunchedListener(async () => {
+//   Navigation.setRoot({
+//     root: {
+//       bottomTabs: {
+//         children: [
+//           {
+//             stack: {
+//               children: [
+//                 {
+//                   component: {
+//                     name: 'com.myApp.WelcomeScreen',
+//                   },
+//                 },
+//               ],
+//             },
+//           },
+//         ],
+//         options: {
+//           bottomTabs: {
+//             backgroundColor: 'white',
+//             shadow: {
+//               color: 'red',
+//             },
+//             hideShadow: false,
+//           },
+//         },
+//       },
+//     },
+//   });
+// });

@@ -7,7 +7,8 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
+import {SafeAreaView, StyleSheet, ScrollView, View, Button} from 'react-native';
+import {Navigation} from 'react-native-navigation';
 
 const App: () => React$Node = () => {
   return (
@@ -17,7 +18,41 @@ const App: () => React$Node = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={{backgroundColor: 'white'}}>
           <View>
-            <Text style={styles.footer}>Hello Wix!</Text>
+            <Button
+              title="Navigate to new root"
+              backgroundColor="black"
+              color="red"
+              onPress={() => {
+                Navigation.setRoot({
+                  root: {
+                    bottomTabs: {
+                      children: [
+                        {
+                          stack: {
+                            children: [
+                              {
+                                component: {
+                                  name: 'com.myApp.WelcomeScreen',
+                                },
+                              },
+                            ],
+                          },
+                        },
+                      ],
+                      options: {
+                        bottomTabs: {
+                          backgroundColor: 'white',
+                          shadow: {
+                            color: 'red',
+                          },
+                          hideShadow: false,
+                        },
+                      },
+                    },
+                  },
+                });
+              }}
+            />
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -27,9 +62,9 @@ const App: () => React$Node = () => {
 
 App.options = {
   bottomTab: {
-    text: 'App'
-  }
-}
+    text: 'App',
+  },
+};
 
 const styles = StyleSheet.create({
   scrollView: {
