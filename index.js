@@ -1,8 +1,7 @@
-/**
- * @format
- */
-
-import {Navigation} from 'react-native-navigation';
+import {
+  Navigation,
+  OptionsModalPresentationStyle,
+} from 'react-native-navigation';
 import App from './App';
 import Details from './src/Details';
 
@@ -22,6 +21,27 @@ Navigation.events().registerAppLaunchedListener(() => {
       },
     },
   });
+});
+
+Navigation.setDefaultOptions({
+  window: {
+    backgroundColor: 'white',
+  },
+  layout: {
+    componentBackgroundColor: 'white',
+    orientation: ['portrait'],
+  },
+  topBar: {
+    visible: false,
+  },
+  bottomTabs: {
+    titleDisplayMode: 'alwaysShow',
+  },
+  statusBar: {
+    style: 'dark',
+    backgroundColor: 'white',
+  },
+  modalPresentationStyle: OptionsModalPresentationStyle.fullScreen,
 });
 
 Navigation.registerComponent('Details', () => Details);

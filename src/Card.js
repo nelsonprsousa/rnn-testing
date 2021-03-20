@@ -16,46 +16,51 @@ const Card: () => React$Node = () => {
     uri: imagePath,
   };
 
-  const navigate = (fromId, toId) =>
+  const SPRING_CONFIG = {
+    mass: 3,
+    damping: 100,
+    stiffness: 200,
+  };
+  const SET_DURATION = 500;
+
+  const showDetailsModal = () => {
     Navigation.showModal({
       component: {
         name: 'Details',
-        passProps: {
-          pointOfInterestId: 1,
-          title,
-          imagePath: source.uri,
-        },
         options: {
           animations: {
             showModal: {
               sharedElementTransitions: [
                 {
-                  fromId,
-                  toId,
-                },
-                {
-                  fromId: `fromId-${title}`,
-                  toId: `destinationId-${title}`,
+                  fromId: 'fromIdImage',
+                  toId: 'toIdImage',
+                  duration: SET_DURATION,
+                  interpolation: {
+                    type: 'spring',
+                    ...SPRING_CONFIG,
+                  },
                 },
               ],
             },
           },
-          modalPresentationStyle: OptionsModalPresentationStyle.fullScreen,
         },
       },
     });
+  };
 
   return (
     <TouchableOpacity
       style={styles.carouselTouchableOpacity}
-      onPress={() => navigate(title, title)}>
+      onPress={() => showDetailsModal()}>
       <View style={styles.carouselImageContainer}>
-        <Image style={styles.carouselImage} source={source} nativeID={title} />
+        <Image
+          style={styles.carouselImage}
+          source={source}
+          nativeID={'fromIdImage'}
+        />
       </View>
       <View style={styles.carouselTextContainer}>
-        <Text style={styles.carouselTitle} nativeID={`fromId-${title}`}>
-          {title}
-        </Text>
+        <Text style={styles.carouselTitle}>{title}</Text>
         <Text style={styles.carouselSubtitle}>{subtitle}</Text>
       </View>
     </TouchableOpacity>

@@ -12,22 +12,17 @@ import Card from './src/Card';
 
 const App: () => React$Node = () => {
   return (
-    <>
-      <SafeAreaView>
-        <ScrollView style={{backgroundColor: 'white', margin: 20}}>
-          <View style={{height: 250}} />
-          <Card />
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <SafeAreaView style={{flex: 1}}>
+      <ScrollView style={{backgroundColor: 'white', margin: 20}}>
+        <View style={{height: 250}} />
+        <Card />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 App.options = {
   topBar: {
-    options: {
-      visible: false,
-    },
     visible: false,
   },
 };
