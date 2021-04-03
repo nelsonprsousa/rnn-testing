@@ -13,7 +13,7 @@ import Card from './src/Card';
 const App: () => React$Node = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <ScrollView style={{backgroundColor: 'white', margin: 20}}>
+      <ScrollView style={{backgroundColor: 'red', margin: 20}}>
         <View style={{height: 250}} />
         <Card />
       </ScrollView>

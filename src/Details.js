@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text} from 'react-native';
+import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
+import {Navigation} from 'react-native-navigation';
 
 const Details: () => React$Node = () => {
   const imagePath =
@@ -16,6 +17,24 @@ const Details: () => React$Node = () => {
         source={source}
         nativeID={'toIdImage'}
       />
+      <TouchableOpacity
+        onPress={() => {
+          Navigation.dismissModal('DetailsId', {
+            animations: {
+              dismissModal: {
+                sharedElementTransitions: [
+                  {
+                    fromId: 'toIdImage',
+                    toId: 'fromIdImage',
+                    duration: 2000,
+                  },
+                ],
+              },
+            },
+          });
+        }}>
+        <Text>Dismiss</Text>
+      </TouchableOpacity>
     </View>
   );
 };

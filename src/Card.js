@@ -21,12 +21,13 @@ const Card: () => React$Node = () => {
     damping: 100,
     stiffness: 200,
   };
-  const SET_DURATION = 500;
+  const SET_DURATION = 2000;
 
   const showDetailsModal = () => {
     Navigation.showModal({
       component: {
         name: 'Details',
+        id: 'DetailsId',
         options: {
           animations: {
             showModal: {
